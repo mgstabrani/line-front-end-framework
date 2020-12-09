@@ -94,3 +94,12 @@ function displayIsInClientInfo() {
         document.getElementById('isInClientMessage').textContent = 'You are opening the app in an external browser.';
     }
 }
+
+function registerButtonHandlers() {
+    document.getElementById('openWindowButton').addEventListener('click', function() {
+        liff.openWindow({
+            url: 'https://alstrukdat.herokuapp.com/',
+            external: true
+        });
+    });
+}
