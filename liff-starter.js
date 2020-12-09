@@ -110,4 +110,17 @@ function registerButtonHandlers() {
             liff.closeWindow();
         }
     });
+
+    document.getElementById('liffLoginButton').addEventListener('click', function() {
+        if (!liff.isLoggedIn()) {
+            liff.login();
+        }
+    });
+ 
+    document.getElementById('liffLogoutButton').addEventListener('click', function() {
+        if (liff.isLoggedIn()) {
+            liff.logout();
+            window.location.reload();
+        }
+    });
 }
