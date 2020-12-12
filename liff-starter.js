@@ -98,7 +98,7 @@ function displayIsInClientInfo() {
 function registerButtonHandlers() {
     document.getElementById('openWindowButton').addEventListener('click', function() {
         liff.openWindow({
-            url: 'https://alstrukdat.herokuapp.com/',
+            url: 'https://krusty-crab.herokuapp.com/',
             external: true
         });
     });
