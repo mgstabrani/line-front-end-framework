@@ -181,14 +181,14 @@ function hapusData(id) {
  
  
 function gantiMenu(menu) {
-    if (menu == "list-catatan") {
+    if (menu == "pesan-makanan") {
         loadCatatan();
         $('#tambah-catatan').hide();
         $('#list-catatan').fadeIn();
         $('#edit-data').hide();
         $('#lihat-data').hide();
     }
-    else if (menu == "tambah-catatan") {
+    else if (menu == "harga-makanan") {
         $('#tambah-catatan').fadeIn();
         $('#list-catatan').hide();
         $('#edit-data').hide();
