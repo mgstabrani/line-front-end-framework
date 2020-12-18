@@ -187,22 +187,26 @@ function gantiMenu(menu) {
         $('#list-catatan').fadeIn();
         $('#edit-data').hide();
         $('#lihat-data').hide();
+        $('#daftar-harga').hide();
     }
     else if (menu == "harga-makanan") {
         $('#tambah-catatan').fadeIn();
         $('#list-catatan').hide();
         $('#edit-data').hide();
         $('#lihat-data').hide();
+        $('#daftar-harga').hide();
     } else if (menu == "edit-data") {
         $('#edit-data').fadeIn();
         $('#tambah-catatan').hide();
         $('#list-catatan').hide();
         $('#lihat-data').hide();
+        $('#daftar-harga').hide();
     } else if (menu == "lihat-data") {
         $('#lihat-data').fadeIn();
         $('#edit-data').hide();
         $('#tambah-catatan').hide();
         $('#list-catatan').hide();
+        $('#daftar-harga').hide();
     } else if(menu == "daftar-harga"){
         $('#daftar-harga').fadeIn();
         $('#lihat-data').hide();
