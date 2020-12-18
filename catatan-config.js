@@ -203,5 +203,11 @@ function gantiMenu(menu) {
         $('#edit-data').hide();
         $('#tambah-catatan').hide();
         $('#list-catatan').hide();
+    } else if(menu == "daftar-harga"){
+        $('#daftar-harga').fadeIn();
+        $('#lihat-data').hide();
+        $('#edit-data').hide();
+        $('#tambah-catatan').hide();
+        $('#list-catatan').hide();
     }
 }
