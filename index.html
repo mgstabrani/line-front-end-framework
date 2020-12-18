@@ -5,7 +5,7 @@
     <title>Krusty Crab</title>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="style.css">
@@ -74,9 +74,8 @@
             </form>
         </div>
  
-        <div id="lihat-data" class="well" style="display:none;">
+        <div id="lihat-data" class="well">
             <form id="eform-data">
- 
                 <div id="nama-group" class="form-group" style="display:none;">
                     <label for="disabled">id data:</label>
                     <input type="text" class="form-control" id="lid_data" name="nama" disabled>
@@ -127,6 +126,39 @@
                 </tbody>
               </table>
         </div>
+
+        <div id="pesan-makanan">
+            <form id="form-data">
+                <h1>Makanan</h1>
+                <hr>
+                <div id="nama-group" class="form-row">
+                    <div class="col">
+                        <label>Krabby Patty</label>
+                    </div>
+                    <div>
+                        <input type="text" class="form-control" id="nama" name="nama">
+                    </div>
+                </div>
+                <div id="tanggal-group" class="form-row">
+                    <div class="col">
+                        <label>Fried Chicken</label>
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" id="tanggal" name="tanggal">
+                    </div>
+                </div>
+                <div id="agenda-group" class="form-row">
+                    <div class="col">
+                        <label>Freid Potato</label>
+                    </div>
+                    <div class="col">
+                        <textarea class="form-control" id="agenda" name="agenda"></textarea><br/>
+                    </div>  
+                </div>
+                <input type="button" value="Simpan" onclick="simpanData();" class="btn btn-success btn-small" />
+                <input type="reset" value="Reset" onclick="" class="btn btn-warning btn-small" />
+            </form>
+        </div>
  
         <div id="notLogin">
             <h3>Ayo makan di Krusty Crab</h3>
@@ -150,37 +182,11 @@
                     <button id="sendMessageButton" class="btn btn-warning btn-small">Send Message</button>
                     <button id="liffLogoutButton" class="btn btn-warning btn-small">Log out</button>
                 </div>
-            </div>
- 
-            <!-- LIFF DATA -->
-            <!-- <div id="liffData">
-                <h3 id="liffDataHeader" class="textLeft">Informasi:</h3>
-                <table>
-                    <tr>
-                        <th>isInClient : </th>
-                        <td id="isInClient" class="textLeft"></td>
-                    </tr>
-                    <tr>
-                        <th>isLoggedIn : </th>
-                        <td id="isLoggedIn" class="textLeft"></td>
-                    </tr>
-                </table>
-            </div> -->
+            </div> 
         </div>
 
-        <!-- LOGIN LOGOUT BUTTONS -->
-        <!-- <div class="buttonGroup">
-            <button id="liffLoginButton" class="btn btn-success btn-small">Log in</button>
-            <button id="liffLogoutButton" class="btn btn-warning btn-small">Log out</button>
-        </div> -->
         <div id="statusMessage">
             <div id="isInClientMessage"></div>
-            <!-- <div id="apiReferenceMessage">
-                <p>Available LIFF methods vary depending on the browser you use to open the LIFF app.</p>
-                <p>Please refer to the <a
-                        href="https://developers.line.biz/en/reference/liff/#initialize-liff-app">API reference
-                        page</a> for more information.</p>
-            </div> -->
         </div>
 
         <!-- LIFF ID ERROR -->
