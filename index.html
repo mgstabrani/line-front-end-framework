@@ -1,227 +1,92 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
- 
 <head>
-    <title>Krusty Crab</title>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
- 
-    <style>
-        .table>thead>tr>th {
-            padding: 60px;
-        }
-    </style>
- 
- 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Krusty Crab</title>
 </head>
- 
-<body onload="loadCatatan();">
- 
-    <div class="col-xs-12 col-md-8 col-md-offset-2" ng-controller="listContactCtrl">
+<body>
+    <div id="notLogin" class="container">
+        <h3>Ayo makan di Krusty Crab</h3>
+        <p>Sebelum memesan makanan, silakan login terlebih dahulu</p>
+        <button id="liffLoginButton" class="btn btn-success btn-small">Log in</button>
+    </div>
+    <div id="pesan-makanan" class="container">
         <div class="page-header">
             <h1 align="center">
                 Selamat Datang di Krusty Crab
             </h1> 
         </div>
-
-        <div id="tambah-catatan" class="well" style="display:none;">
-            <form id="form-data">
-                <div id="nama-group" class="form-group">
-                    <label>Nama:</label>
-                    <input type="text" class="form-control" id="nama" name="nama">
+        <form id="form-data">
+            <h4>Makanan</h4>
+            <hr>
+            <div id="krabby-patty" class="form-row">
+                <div class="col">
+                    <h6><b>Krabby Patty</b></h6>
+                    <h6>Rp50.000</h6>
                 </div>
-                <div id="tanggal-group" class="form-group">
-                    <label>Tanggal:</label>
-                    <input type="text" class="form-control" id="tanggal" name="tanggal">
+                <div class="col mt-4">
+                    <span class="glyphicon glyphicon-minus" aria-hidden="true" onclick="kurang('jumlah-krabby-patty');"></span>
+                    <span id="jumlah-krabby-patty">0</span>
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true" onclick="add('jumlah-krabby-patty');"></span>
                 </div>
-                <div id="agenda-group" class="form-group">
-                    <label>Agenda:</label>
-                    <textarea class="form-control" id="agenda" name="agenda"></textarea><br />
+            </div>
+            <div id="fried-chicken" class="form-row">
+                <div class="col">
+                    <h6><b>Fried Chicken</b></h6>
+                    <h6>Rp40.000</h6>
                 </div>
-                <input type="button" value="Simpan" onclick="simpanData();" class="btn btn-success btn-small" />
-                <input type="reset" value="Reset" onclick="" class="btn btn-warning btn-small" />
-            </form>
-        </div>
- 
-        <div id="edit-data" class="well" style="display:none;">
-            <form id="eform-data">
- 
-                <div id="nama-group" class="form-group" style="display:none;">
-                    <label>id data:</label>
-                    <input type="text" class="form-control" id="eid_data" name="nama">
+                <div class="col mt-4">
+                    <span class="glyphicon glyphicon-minus" aria-hidden="true" onclick="kurang('jumlah-fried-chicken');"></span>
+                    <span id="jumlah-fried-chicken">0</span>
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true" onclick="add('jumlah-fried-chicken');"></span>
                 </div>
- 
-                <div id="nama-group" class="form-group">
-                    <label>Nama:</label>
-                    <input type="text" class="form-control" id="enama" name="nama">
+            </div>
+            <hr>
+            <h4>Minuman</h4>
+            <hr>
+            <div id="milkshake" class="form-row">
+                <div class="col">
+                    <h6><b>Milkshake</b></h6>
+                    <h6>Rp20.000</h6>
                 </div>
-                <div id="tanggal-group" class="form-group">
-                    <label>Tanggal:</label>
-                    <input type="text" class="form-control" id="etanggal" name="tanggal">
+                <div class="col mt-4">
+                    <span class="glyphicon glyphicon-minus" aria-hidden="true" onclick="kurang('jumlah-milkshake'); "></span>
+                    <span id="jumlah-milkshake">0</span>
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true" onclick="add('jumlah-milkshake'); "></span>
                 </div>
-                <div id="agenda-group" class="form-group">
-                    <label>Agenda:</label>
-                    <textarea class="form-control" id="eagenda" name="agenda"></textarea><br />
+            </div>
+            <div id="orange-juice" class="form-row">
+                <div class="col">
+                    <h6><b>Orang Juice</b></h6>
+                    <h6>Rp10.000</h6>
                 </div>
-                <input type="button" value="Simpan" onclick="simpanEditData();" class="btn btn-success btn-small" />
-                <input type="reset" value="Reset" onclick="" class="btn btn-warning btn-small" />
-                <input type="button" value="Cancel" onclick="gantiMenu('list-catatan');"
-                    class="btn btn-warning btn-small" />
-            </form>
-        </div>
- 
-        <div id="lihat-data" class="well">
-            <form id="eform-data">
-                <div id="nama-group" class="form-group" style="display:none;">
-                    <label for="disabled">id data:</label>
-                    <input type="text" class="form-control" id="lid_data" name="nama" disabled>
+                <div class="col mt-4">
+                    <span class="glyphicon glyphicon-minus" aria-hidden="true" onclick="kurang('jumlah-orange-juice'); "></span>
+                    <span id="jumlah-orange-juice">0</span>
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true" onclick="add('jumlah-orange-juice');"></span>
                 </div>
- 
-                <div id="nama-group" class="form-group">
-                    <label for="disabled">Nama:</label>
-                    <input type="text" class="form-control" id="lnama" name="nama" disabled>
+            </div>
+            <hr>
+            <div class="form-row">
+                <div class="col">
+                    <h4>Ringkasan</h4>
+                    <h6>Total : <span id="total"></span></h6>
+                    <h6>Harga: <span id="harga"></span></h6>
                 </div>
-                <div id="tanggal-group" class="form-group">
-                    <label for="disabled">Tanggal:</label>
-                    <input type="text" class="form-control" id="ltanggal" name="tanggal" disabled>
+                <div class="col mt-4">
+                    <button class="btn btn-success">Pesan Sekarang</button>
                 </div>
-                <div id="agenda-group" class="form-group">
-                    <label for="disabled">Agenda:</label>
-                    <textarea class="form-control" id="lagenda" name="agenda" disabled></textarea>
-                </div>
-                <input type="button" value="Kembali" onclick="gantiMenu('list-catatan');"
-                    class="btn btn-warning btn-small" />
-            </form>
-        </div>
-
-        <div id="daftar-harga" class="well" style="display:none;">
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">No.</th>
-                    <th scope="col">Nama</th>
-                    <th scope="col">Harga</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Krabby Patty</td>
-                    <td>Rp50.000</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Fried Chicken</td>
-                    <td>Rp40.000</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Fried Potato</td>
-                    <td>Rp30.000</td>
-                  </tr>
-                </tbody>
-              </table>
-        </div>
-
-        <div id="pesan-makanan">
-            <form id="form-data">
-                <h1>Makanan</h1>
-                <hr>
-                <div id="nama-group" class="form-row">
-                    <div class="col">
-                        <label>Krabby Patty</label>
-                    </div>
-                    <div>
-                        <input type="text" class="form-control" id="nama" name="nama">
-                    </div>
-                </div>
-                <div id="tanggal-group" class="form-row">
-                    <div class="col">
-                        <label>Fried Chicken</label>
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control" id="tanggal" name="tanggal">
-                    </div>
-                </div>
-                <div id="agenda-group" class="form-row">
-                    <div class="col">
-                        <label>Freid Potato</label>
-                    </div>
-                    <div class="col">
-                        <textarea class="form-control" id="agenda" name="agenda"></textarea><br/>
-                    </div>  
-                </div>
-                <input type="button" value="Simpan" onclick="simpanData();" class="btn btn-success btn-small" />
-                <input type="reset" value="Reset" onclick="" class="btn btn-warning btn-small" />
-            </form>
-        </div>
- 
-        <div id="notLogin">
-            <h3>Ayo makan di Krusty Crab</h3>
-            <p>Sebelum memesan makanan, silakan login terlebih dahulu</p>
-            <button id="liffLoginButton" class="btn btn-success btn-small">Log in</button>
-        </div>
- 
-        <!--Konten LIFF v2-->
- 
-        <div id="liffAppContent">
-            <ul class="nav nav-pills">
-                <li><a id="nav-list-catatan" href="javascript:void(0);" onclick="gantiMenu('pesan-makanan');">Pesan Makanan</a></li>
-                <li><a id="nav-tambah-catatan" href="javascript:void(0);" onclick="gantiMenu('daftar-harga');">Daftar Harga Makanan</a></li>
-            </ul>
+            </div>
             
-            <!-- ACTION BUTTONS -->
-            <div class="buttonGroup">
-                <div class="buttonRow">
-                    <button id="openWindowButton" class="btn btn-success btn-small">Open External Window</button>
-                    <button id="closeWindowButton" class="btn btn-danger btn-small">Close LIFF App</button>
-                    <button id="sendMessageButton" class="btn btn-warning btn-small">Send Message</button>
-                    <button id="liffLogoutButton" class="btn btn-warning btn-small">Log out</button>
-                </div>
-            </div> 
-        </div>
-
-        <div id="statusMessage">
-            <div id="isInClientMessage"></div>
-        </div>
-
-        <!-- LIFF ID ERROR -->
-        <div id="liffIdErrorMessage" class="hidden">
-            <p>You have not assigned any value for LIFF ID.</p>
-            <p>If you are running the app using Node.js, please set the LIFF ID as an environment variable in your
-                Heroku account follwing the below steps: </p>
-            <code id="code-block">
-                <ol>
-                    <li>Go to `Dashboard` in your Heroku account.</li>
-                    <li>Click on the app you just created.</li>
-                    <li>Click on `Settings` and toggle `Reveal Config Vars`.</li>
-                    <li>Set `MY_LIFF_ID` as the key and the LIFF ID as the value.</li>
-                    <li>Your app should be up and running. Enter the URL of your app in a web browser.</li>
-                </ol>
-            </code>
-            <p>If you are using any other platform, please add your LIFF ID in the <code>index.html</code> file.</p>
-            <p>For more information about how to add your LIFF ID, see <a
-                    href="https://developers.line.biz/en/reference/liff/#initialize-liff-app">Initializing the LIFF
-                    app</a>.</p>
-        </div>
-        <!-- LIFF INIT ERROR -->
-        <div id="liffInitErrorMessage" class="hidden">
-            <p>Something went wrong with LIFF initialization.</p>
-            <p>LIFF initialization can fail if a user clicks "Cancel" on the "Grant permission" screen, or if an error occurs in the process of <code>liff.init()</code>.
-        </div>
-        <!-- NODE.JS LIFF ID ERROR -->
-        <div id="nodeLiffIdErrorMessage" class="hidden">
-            <p>Unable to receive the LIFF ID as an environment variable.</p>
-        </div>
-        
+        </form>
     </div>
 </body>
-<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
-<script src="catatan-config.js"></script>
-<script src="liff-starter.js"></script>
- 
+    <script src="script.js"></script>
 </html>
