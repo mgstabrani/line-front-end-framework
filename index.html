@@ -17,7 +17,7 @@
         <p>Sebelum memesan makanan, silakan login terlebih dahulu</p>
         <button id="liffLoginButton" class="btn btn-success btn-small">Log in</button>
     </div>
-    <div id="liffAppContent" class="container mt-5 mb-5" onload="getData();">
+    <div id="liffAppContent" class="container mt-5 mb-5">
         <div class="page-header">
             <h1 align="center">
                 Selamat Datang di Krusty Crab
@@ -84,10 +84,17 @@
                     <button class="btn btn-success">Pesan Sekarang</button>
                 </div>
             </div>
-            
         </form>
+        <div class="buttonGroup">
+            <div class="buttonRow">
+                <button id="openWindowButton" class="btn btn-success btn-small">Open External Window</button>
+                <button id="closeWindowButton" class="btn btn-danger btn-small">Close LIFF App</button>
+                <button id="liffLogoutButton" class="btn btn-warning btn-small">Log out</button>
+            </div>
+        </div>
     </div>
 </body>
     <script src="script.js"></script>
+    <script src="liff-starter.js"></script>
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 </html>
