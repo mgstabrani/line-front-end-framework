@@ -1,3 +1,7 @@
+////LIFFF/////
+const defaultLiffId = "1655315854-XEoJBop8";
+myLiffId = defaultLiffId;
+
 function getData(){
     document.getElementById('jumlah-krabby-patty').innerHTML = localStorage.getItem('krabbyPatty');
     document.getElementById('jumlah-fried-chicken').innerHTML = localStorage.getItem('friedChicken');
@@ -5,6 +9,7 @@ function getData(){
     document.getElementById('jumlah-orange-juice').innerHTML = localStorage.getItem('orangeJuice');
     jumlahPesanan();
     harga();
+    initializeLiffOrDie(myLiffId);
 }
 
 function postData(){
@@ -62,3 +67,66 @@ function kurang(data){
     harga();
     postData();
 }
+
+function initializeLiffOrDie(myLiffId) {
+    if (!myLiffId) {
+        document.getElementById("liffAppContent").classList.add('hidden');
+        document.getElementById("liffIdErrorMessage").classList.remove('hidden');
+    } else {
+        initializeApp();
+    }
+}
+
+/**
+ * Initialize the app by calling functions handling individual app components
+ */
+function initializeApp() {
+    if (liff.isLoggedIn()) {
+        document.getElementById('notLogin').classList.toggle('hidden');
+    } else {
+        document.getElementById('liffAppContent').classList.toggle('hidden');
+    }
+}
+ 
+document.getElementById('openWindowButton').addEventListener('click', function() {
+    liff.openWindow({
+        url: 'https://krusty-crab.herokuapp.com/',
+        external: true
+    });
+});
+
+document.getElementById('closeWindowButton').addEventListener('click', function() {
+    if (!liff.isInClient()) {
+        sendAlertIfNotInClient();
+    } else {
+        liff.closeWindow();
+    }
+});
+
+document.getElementById('liffLoginButton').addEventListener('click', function() {
+    if (!liff.isLoggedIn()) {
+        liff.login();
+    }
+});
+
+document.getElementById('liffLogoutButton').addEventListener('click', function() {
+    if (liff.isLoggedIn()) {
+        liff.logout();
+        window.location.reload();
+    }
+});
+
+document.getElementById('sendMessageButton').addEventListener('click', function() {
+    if (!liff.isInClient()) {
+        sendAlertIfNotInClient();
+    } else {
+        liff.sendMessages([{
+            'type': 'text',
+            'text': "Anda telah menggunakan fitur Send Message!"
+        }]).then(function() {
+            window.alert('Ini adalah pesan dari fitur Send Message');
+        }).catch(function(error) {
+            window.alert('Error sending message: ' + error);
+        });
+    }
+});
