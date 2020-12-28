@@ -132,12 +132,14 @@ document.getElementById('liffLogoutButton').addEventListener('click', function()
 });
 
 document.getElementById('sendMessageButton').addEventListener('click', function() {
+
         if (!liff.isInClient()) {
             sendAlertIfNotInClient();
         } else {
             liff.sendMessages([{
                 'type': 'text',
-                'text': "Anda telah menggunakan fitur Send Message!"
+                'text': 
+                "Hai Customer,\n\nTerima kasih telah memesan makanan, berikut adalah review pesanannya."
             }]).then(function() {
                 window.alert('Ini adalah pesan dari fitur Send Message');
             }).catch(function(error) {
