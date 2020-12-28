@@ -158,7 +158,7 @@ document.getElementById('sendMessageButton').addEventListener('click', function(
         menu[0] = document.getElementById('jumlah-krabby-patty').innerHTML+" Krabby Patty\n";
         menu[1] = document.getElementById('jumlah-fried-chicken').innerHTML+" Fried Chicken\n";
         menu[2] = document.getElementById('jumlah-milkshake').innerHTML+" Milkshake\n";
-        menu[3] = document.getElementById('jumlah-orange-juice').innerHTML+" Orang Juice\n";
+        menu[3] = document.getElementById('jumlah-orange-juice').innerHTML+" Orange Juice\n";
         var pesan = []
         for(var i = 0; i < 4; i++){
             if(menu[i][0] > 0){
