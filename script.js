@@ -22,6 +22,7 @@ function initializeLiff(myLiffId) {
 function initializeApp() {
     if (liff.isLoggedIn()) {
         document.getElementById('notLogin').classList.toggle('hidden');
+        document.getElementById('username').innerHTML = liff.getProfile().displayName;
     } else {
         document.getElementById('liffAppContent').classList.toggle('hidden');
     }
@@ -145,7 +146,7 @@ document.getElementById('sendMessageButton').addEventListener('click', function(
         }
         var message = "Hai Customer,\n\nTerima kasih telah memesan makanan, berikut adalah review pesanannya:\n\n";
         for(var i = 0; i < pesan.length; i++){
-            message += pesan[i]+"\n";
+            message += pesan[i];
         }
         message += "\nPesanan Anda akan segera diproses dan akan diberitahu jika sudah bisa diambil.\n\nMohon ditunggu ya!"
         if (!liff.isInClient()) {
@@ -161,3 +162,7 @@ document.getElementById('sendMessageButton').addEventListener('click', function(
             });
         }
 });
+
+function sendAlertIfNotInClient(){
+    console.log("Kamu harus buka lewat aplikasi line untuk memesan.");
+}
