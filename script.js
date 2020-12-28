@@ -22,7 +22,8 @@ function initializeLiff(myLiffId) {
 function initializeApp() {
     if (liff.isLoggedIn()) {
         document.getElementById('notLogin').classList.toggle('hidden');
-        document.getElementById('username').innerHTML = liff.getProfile().displayName;
+        var profile = JSON.parse(liff.getProfile());
+        document.getElementById('username').innerHTML = profile.displayName;
     } else {
         document.getElementById('liffAppContent').classList.toggle('hidden');
     }
