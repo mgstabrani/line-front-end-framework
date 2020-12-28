@@ -2,15 +2,6 @@
 const defaultLiffId = "1655315854-XEoJBop8";
 myLiffId = defaultLiffId;
 
-function initializeLiffOrDie(myLiffId) {
-    if (!myLiffId) {
-        document.getElementById("liffAppContent").classList.add('hidden');
-        document.getElementById("liffIdErrorMessage").classList.remove('hidden');
-    } else {
-        initializeLiff(myLiffId);
-    }
-}
-
 function initializeLiff(myLiffId) {
     liff
         .init({
@@ -43,7 +34,17 @@ function getData(){
     document.getElementById('jumlah-orange-juice').innerHTML = localStorage.getItem('orangeJuice');
     jumlahPesanan();
     harga();
-    initializeLiffOrDie(myLiffId);
+    liff
+        .init({
+            liffId: myLiffId // Use own liffId
+        })
+        .then(() => {
+            initializeApp();
+        })
+        .catch((err) => {
+            // Error happens during initialization
+            console.log("Error");
+        });
 }
 
 function postData(){
