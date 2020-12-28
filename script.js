@@ -132,14 +132,28 @@ document.getElementById('liffLogoutButton').addEventListener('click', function()
 });
 
 document.getElementById('sendMessageButton').addEventListener('click', function() {
-
+        var menu = []
+        menu[0] = document.getElementById('jumlah-krabby-patty').innerHTML+" Krabby Patty\n";
+        menu[1] = document.getElementById('jumlah-fried-chicken').innerHTML+" Fried Chicken\n";
+        menu[2] = document.getElementById('jumlah-milkshake').innerHTML+" Milkshake\n";
+        menu[3] = document.getElementById('jumlah-orange-juice').innerHTML+" Orang Juice\n";
+        var pesan = []
+        for(var i = 0; i < 4; i++){
+            if(menu[i][0] > 0){
+                pesan.push(menu[i]);
+            }
+        }
+        var message = "Hai Customer,\n\nTerima kasih telah memesan makanan, berikut adalah review pesanannya:\n\n";
+        for(var i = 0; i < pesan.length; i++){
+            message += pesan[i]+"\n";
+        }
+        message += "\nPesanan Anda akan segera diproses dan akan diberitahu jika sudah bisa diambil.\n\nMohon ditunggu ya!"
         if (!liff.isInClient()) {
             sendAlertIfNotInClient();
         } else {
             liff.sendMessages([{
                 'type': 'text',
-                'text': 
-                "Hai Customer,\n\nTerima kasih telah memesan makanan, berikut adalah review pesanannya."
+                'text': message
             }]).then(function() {
                 window.alert('Ini adalah pesan dari fitur Send Message');
             }).catch(function(error) {
