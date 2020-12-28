@@ -22,17 +22,24 @@ function initializeLiff(myLiffId) {
 function initializeApp() {
     if (liff.isLoggedIn()) {
         document.getElementById('notLogin').classList.toggle('hidden');
-        liff.getProfile()
-            .then(profile => {
-                const name = profile.displayName
-            })
-            .catch((err) => {
-                console.log('error', err);
+        const accessToken = liff.getAccessToken();
+        if (accessToken) {
+            fetch("https://api...", {
+                headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${accessToken}`
+                }
+                //...
             });
-        document.getElementById('username').innerHTML = name;
+            var name = JSON.parse(liff.getProfile());
+            document.getElementById('username').innerHTML = name.displayName;
+        }
+        
     } else {
         document.getElementById('liffAppContent').classList.toggle('hidden');
     }
+
+    console.log(liff.getAccessToken());
 
     if(liff.isInClient()){
         document.getElementById('liffLogoutButton').classList.toggle('hidden');
