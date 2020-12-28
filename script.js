@@ -26,7 +26,7 @@ function initializeApp() {
         document.getElementById('openWindowButton').classList.toggle('hidden');
         document.getElementById('closeWindowButton').classList.toggle('hidden');
     }
-    
+
     if (liff.isLoggedIn()) {
         document.getElementById('notLogin').classList.toggle('hidden');   
         liff.getProfile()
@@ -183,5 +183,5 @@ document.getElementById('sendMessageButton').addEventListener('click', function(
 });
 
 function sendAlertIfNotInClient(){
-    console.log("Kamu harus buka lewat aplikasi line untuk memesan.");
+    alert("Kamu harus buka lewat aplikasi line untuk memesan.");
 }
