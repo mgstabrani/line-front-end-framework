@@ -20,19 +20,31 @@ function initializeLiff(myLiffId) {
  * Initialize the app by calling functions handling individual app components
  */
 function initializeApp() {
-    if (liff.isLoggedIn()) {
-        document.getElementById('notLogin').classList.toggle('hidden');   
-        document.getElementById('username').innerHTML = liff.getProfile().displayName;
-    } else {
-        document.getElementById('liffAppContent').classList.toggle('hidden');
-    }
-
     if(liff.isInClient()){
         document.getElementById('liffLogoutButton').classList.toggle('hidden');
     }else{
         document.getElementById('openWindowButton').classList.toggle('hidden');
         document.getElementById('closeWindowButton').classList.toggle('hidden');
     }
+    
+    if (liff.isLoggedIn()) {
+        document.getElementById('notLogin').classList.toggle('hidden');   
+        liff.getProfile()
+            .then(profile => {
+                const name = profile.displayName
+                displayUser(name);
+            })
+            .catch((err) => {
+                console.log('error', err);
+            });
+    } else {
+        document.getElementById('liffAppContent').classList.toggle('hidden');
+    }
+
+}
+
+function displayUser(name){
+    document.getElementById('username').innerHTML = name;
 }
 
 function getData(){
