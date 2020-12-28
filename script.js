@@ -32,7 +32,8 @@ function initializeApp() {
         liff.getProfile()
             .then(profile => {
                 const name = profile.displayName
-                displayUser(name);
+                const img = profile.pictureUrl
+                displayUser(name,img);
             })
             .catch((err) => {
                 console.log('error', err);
@@ -43,8 +44,9 @@ function initializeApp() {
 
 }
 
-function displayUser(name){
+function displayUser(name,img){
     document.getElementById('username').innerHTML = name;
+    document.getElementById('img-user').src = img;
 }
 
 function getData(){
@@ -163,7 +165,8 @@ document.getElementById('sendMessageButton').addEventListener('click', function(
                 pesan.push(menu[i]);
             }
         }
-        var message = "Hai Customer,\n\nTerima kasih telah memesan makanan, berikut adalah review pesanannya:\n\n";
+        var username = document.getElementById('username').innerHTML;
+        var message = "Hai " + username + ",\n\nTerima kasih telah memesan makanan, berikut adalah review pesanannya:\n\n";
         for(var i = 0; i < pesan.length; i++){
             message += pesan[i];
         }
